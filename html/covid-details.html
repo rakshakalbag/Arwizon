@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </head>
+
+<body onload="loadDoc()">
+
+                    <div class="container-fluid" style="padding: 1%;">
+                        <div style="text-align: center;">
+                        <p style="color: rgb(62, 107, 173);font-weight: bolder;font-size:xx-large;">COVID19 UPDATES STATE-WISE</p>
+                        <span style="font-size: larger;">Enter state name</span>
+                        <input type="text" style="border-radius: 2%;" name="details"/>
+                        
+                        <button type="button" class="btn btn-info"  onclick="searchdetails();">search</button>
+                        <button type="button" class="btn btn-info"  onclick="loadDoc();">Get full Data</button>
+                    </div>
+                        <br><br>
+                        <div id="demo">
+                        <table class="table table-stripe" id="tb" border="3"> 
+                            <tr class="table-info">
+                                <th scope="col" >state</th>
+                                <th scope="col">confirmed</th>
+                                <th scope="col">deaths</th>
+                                <th scope="col">deltaconfirmed</th>
+                                <th scope="col">deltadeaths</th>
+                                <th scope="col">deltarecovered</th>
+                                <th scope="col">lastupdatedtime</th>
+                                <th scope="col">recovered</th>
+                                <th scope="col">active</th>
+                                <th scope="col">statecode</th>
+                                <th scope="col">statenotes</th>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+<script>
+
+    var covid;
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function()
+        {
+                if (this.readyState == 4 && this.status == 200) 
+                {
+                    var tr1="";
+                     covid = JSON.parse(this.responseText);
+                    for(var i=covid.statewise.length-1;i>=0;i--)
+                    {
+
+                        tr1 = tr1+"<tr><td>" +covid.statewise[i].state +"</td><td>" +covid.statewise[i].confirmed
+                            +"</td><td>" +covid.statewise[i].deaths +"</td><td>" +covid.statewise[i].deltaconfirmed
+                            +"</td><td>" +covid.statewise[i].deltadeaths +"</td><td>" +covid.statewise[i].deltarecovered
+                            +"</td><td>" +covid.statewise[i].lastupdatedtime+"</td><td>" +covid.statewise[i].recovered 
+                            +"</td><td>" +covid.statewise[i].active
+                                +"</td><td>" +covid.statewise[i].statecode
+                                +"</td><td>" +covid.statewise[i].statenotes +"</td></tr>";
+
+                            
+                    }
+                        
+                                    $("#tb").append(tr1);
+                                    $('table tr:last') .addClass("bg-danger"); 
+                        
+                }
+        };
+            xhttp.open("GET", "https://api.covid19india.org/data.json", true);
+            xhttp.send();
+            }
+
+
+            function searchdetails()
+                {
+                    var info = $("input").val()
+                    
+                        
+                            var tr1="";
+                            for(var i=0;i<covid.statewise.length;i++)
+                            {
+                                if(info==covid.statewise[i].state)
+                                tr1="<tr><td>" +covid.statewise[i].state +"</td><td>" +covid.statewise[i].confirmed
+                                +"</td><td>" +covid.statewise[i].deaths +"</td><td>" +covid.statewise[i].deltaconfirmed
+                                +"</td><td>" +covid.statewise[i].deltadeaths +"</td><td>" +covid.statewise[i].deltarecovered
+                                +"</td><td>" +covid.statewise[i].lastupdatedtime+"</td><td>" +covid.statewise[i].recovered 
+                                +"</td><td>" +covid.statewise[i].active
+                                +"</td><td>" +covid.statewise[i].statecode
+                                +"</td><td>" +covid.statewise[i].statenotes +"</td></tr>";
+
+                                
+                            }
+                            $("tr td").hide();
+                            $("#tb").append(tr1);
+
+                   
+                }
+                
+                
+
+</script>
+
+</body>
+</html>

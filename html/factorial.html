@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+
+        <div>number <input id="t1" type="text"><br>
+            <p id="t2"></p>
+            <br>
+            
+            <button type="button" onclick="factorial();">result</button>
+        </div> 
+
+    </body>
+    <script>
+
+        function fact(a)
+        {
+            if(a<=1)
+            return 1;
+            else return (a*fact(a-1));
+        }
+        function factorial()
+        {
+            var a = parseInt(document.querySelector("#t1").value);
+            var r = fact(a);
+            document.querySelector("#t2").textContent = "factorial is "+r;
+
+        }
+    </script>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<nav class="navbar navbar-light fixed-top" style="background-color:white;text-decoration:none;">
+  <img src="../images/Arwizon-B.png" style="padding-left:110px ;">
+</nav>
+<style>
+  
+
+label{
+    font-size: large;
+    font-weight: bold;
+}
+
+input:invalid{
+  border: 1px solid red;
+}
+
+input:valid{
+  border: 1px solid black;
+}
+
+.borderColor{
+  border:1px solid red;
+}
+
+</style>
+
+</head>
+    <body onload="visitcount(); ">
+      
+        <div class="container" style="margin-top: 5%;">
+        <form action="../html/welcom-page.html" onsubmit="return submitfrom(event);" novalidate>
+          
+            <div style="width: 50%;position: relative;left: 25%;border:solid;background-color: rgb(158, 200, 216);">
+                <div style="padding: 10%;">
+
+                  <span id="timenow"></span>
+                  <button onclick="sarttime(m)">Start time</button>
+                  <button onclick="stoptime(m)">Stop time</button>
+                  
+            <div class="form-group">
+                <label for="usr">First Name:</label>
+                <input type="text" class="form-control" id="fusr" name="fname" Pattern="[A-Za-z]+" onfocus="focusMethod(this);" onblur="blurMethod(this);" onchange="ptr();" required>
+                <!--<span id="span1"></span>-->
+                <span id="span8"></span>
+                <span id="error"></span>
+              </div>
+              <div class="form-group">
+                <label for="usr">Last Name</label>
+                <input type="text" class="form-control" id="lusr" name="lname" onfocus="focusMethod(this);" onblur="blurMethod(this);" onchange="ptr1();">
+                <!--<span id="span2"></span>-->
+                <span id="span9"></span>
+              </div>
+
+
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" onfocus="focusMethod(this);" onblur="blurMethod(this);" readonly>
+              </div>
+
+
+              <div class="form-group">
+              <label for="phone">Enter your phone number:</label>
+            <input type="text" id="phone" name="phone"  class="form-control" onfocus="focusMethod(this);" onblur="blurMethod(this);" onchange="ptr3();" Pattern="^[7-9]{1}[0-9]{9}$">
+            <!--<span id="span6"></span>-->
+            <span id="span10"></span>
+            <span id="phonee"></span>
+
+
+          </div>
+            <div class="form-group"> 
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onfocus="focusMethod(this);" onblur="blurMethod(this);" required>
+              <!--<span id="span5"></span>-->
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" onfocus="focusMethod(this);" onblur="blurMethod(this);" onchange="ptr4();" required>
+              <span id="span11"></span>
+            
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Input Resume</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+                </div>
+
+
+
+
+              <div class="form-check">
+                  Gender:<br>
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="male" >
+                <label class="form-check-label" for="exampleRadios1">
+                  Male
+                  
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Female" >
+                <label class="form-check-label" for="exampleRadios2">
+                  Female
+                  
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="others">
+                <label class="form-check-label" for="exampleRadios3">
+                  others<br>
+                  <!--<span id="span3"></span>-->
+                  <span id="span12"></span>
+
+
+
+
+                </label>
+              </div>
+              <div class="form-check">
+                Languages known:
+                <input type="checkbox"  id="exampleCheck1" value="c">
+                <label class="form-check-label" for="exampleCheck1" >C</label>
+
+                <input type="checkbox"  id="exampleCheck2" value="c++">
+                <label class="form-check-label" for="exampleCheck2" >C++</label>
+
+                <input type="checkbox"  id="exampleCheck3" value="java">
+                <label class="form-check-label" for="exampleCheck3" >java</label>
+                <br>
+                <!--<span id="span4"></span>-->
+                <span id="span13"></span>
+              </div><br>
+
+              
+            <button type="submit" class="btn btn-primary alert alert-success" role="alert" >Submit</button>
+            <button type="button" onclick="submitfrom(event)">click</button><br>
+            <span id="count"></span>
+              <script>
+                function myclick(){
+
+                  var ar = document.querySelectorAll("span");
+                for(var i=0;i<ar.length;i++)
+                {
+                  ar[i].style.color="blue";
+                }
+                  
+                document.querySelector("#span1").textContent = "You entered "+document.querySelector("#fusr").value
+                document.querySelector("#span2").textContent = "You entered "+document.querySelector("#lusr").value
+
+                document.querySelector("#fullname").value = document.querySelector("#fusr").value+" "+document.querySelector("#lusr").value
+
+                
+
+                document.querySelector("#span3"). textContent= "You entered "+document.querySelector("input[id]:checked").value
+                document.querySelector("#span6").textContent = "You entered "+document.querySelector("#phone").value
+                document.querySelector("#span5").textContent = "You entered "+document.querySelector("#exampleInputEmail1").value
+                var arr= document.querySelectorAll("input[type=checkbox]:checked")
+                var str="You entered ";
+                for(var i=0;i<arr.length-1;i++)
+                {
+                   str = str + arr[i].value +","
+                }
+                str = str + arr[i].value
+                document.querySelector("#span4").textContent=str
+                }
+
+              function focusMethod(obj)
+              {
+                obj.style.backgroundColor="yellow";
+              }
+
+              function blurMethod(obj)
+              {
+                obj.style.backgroundColor="white";
+              }
+
+              function colortext()
+              {
+                  var ar = document.querySelectorAll("span");
+                    for(var i=0;i<ar.length;i++)
+                    {
+                      ar[i].style.color="red";
+                    }
+              }
+              /*function ptr()
+              {
+                var namePattern="^[A-Za-z]+$";
+                var uname = document.querySelector("#fusr").value;
+                colortext()
+                if(uname.search(namePattern)==-1)
+                document.querySelector("#span8").textContent="name can only have alphabet";
+                else
+                document.querySelector("#span8").textContent="";
+
+              }
+
+              function ptr1()
+              {
+                var namePattern="^[A-Za-z]+$";
+                var lname = document.querySelector("#lusr").value;
+                colortext()
+                if(lname.search(namePattern)==-1)
+                document.querySelector("#span9").textContent="name can only have alphabet";
+                else
+                document.querySelector("#span9").textContent="";
+
+              }
+
+              function ptr3()
+              {
+                var namePattern="^[7-9]{1}[0-9]{9}$";
+                var no = document.querySelector("#phone").value;
+                colortext()
+                if(no.search(namePattern)==-1)
+                document.querySelector("#span10").textContent="phone number can only contain numbers";
+                else
+                document.querySelector("#span10").textContent="";
+
+              }
+
+              function ptr4()
+              {
+                var npatrn = "^[a-zA-Z0-9]{8}$";
+                var nop = document.querySelector("#exampleInputPassword1").value;
+                colortext()
+                if(nop.search( npatrn)==-1)
+                document.querySelector("#span11").textContent="password should contain eight characters";
+                else
+                document.querySelector("#span11").textContent="";
+
+              }*/
+
+              function radiovalid()
+              {
+                    var a = document.querySelector("input[type=radio]:checked");
+                    colortext()
+                    console.log(a);
+                    if(a==null)
+                    {
+                      document.querySelector("#span12").textContent="select any one";
+                    }
+                
+                    else
+                    {
+                    document.querySelector("#span12").textContent="";
+                    }
+              }
+
+
+              function checkboxvalidate()
+              {
+
+                    var a = document.querySelector("input[type=checkbox]:checked");
+                    colortext()
+                    if(a==null)
+                    {
+                      document.querySelector("#span13").textContent="select any one";
+                    }
+                
+                    else
+                    {
+                    document.querySelector("#span13").textContent="";
+                    }
+
+              }
+
+
+              var count = localStorage.getItem("count");
+              function visitcount()
+              {
+                if (typeof(Storage) !== "undefined") {
+                    count++;
+                    localStorage.setItem("count",count)
+                    document.querySelector("#count").textContent="you visited "+ localStorage.getItem("count")+" times";
+                  } else {
+                    document.getElementById("#result").innerHTML = "Sorry, your browser does not support Web Storage...";
+                  }
+              }
+              var m; 
+              function displaytime()
+              {
+                var d = new Date();
+                document.querySelector("#timenow").textContent = d.toLocaleTimeString();
+              }
+
+              function sarttime()
+              {
+                  m = setInterval(displaytime,1000);
+              }
+
+              function stoptime()
+              {
+                  clearInterval(m);
+              }
+
+              function showNameError(){
+              if(document.querySelector("input[type=text]").validity.valueMissing)
+                  document.querySelector("#error").textContent="The name is empty";
+              if(document.querySelector("input[type=text]").validity.patternMismatch)
+                  document.querySelector("#error").textContent="Pattern does not match";
+            }
+
+              function submitfrom(ev)
+              {     
+                if (typeof(Storage) !== "undefined") {
+                    // Store
+                    localStorage.setItem("frname", document.querySelector("#fusr").value);
+                  } else {
+                    document.getElementById("fusr").innerHTML = "Sorry, your browser does not support Web Storage...";
+                  }
+                    radiovalid()
+                    checkboxvalidate()
+
+                    if(!document.querySelector("input[type=text]").validity.valid)
+                    {   
+                        document.querySelector("input[type=text]").className="borderColor";
+                        showNameError();
+                    }
+                    else{
+                      document.querySelector("#span10").textContent="";
+                    }
+                    
+                    
+                    var spanvalue=document.querySelectorAll("span");
+                    for(var i=0;i<spanvalue.length;i++)
+                    {
+                        if(spanvalue[i].textContent!="")
+                        return false;
+                        else
+                        continue;
+                    }
+                    return true;
+              }
+
+                   
+
+              </script>
+
+
+        </div>
+    </div>
+          </form>
+        </div>
+    </body>
+</html>

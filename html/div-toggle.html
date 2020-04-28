@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function()
+            {
+                $("#b1").click(
+                    function()
+                    {
+                        var a = $("#lists").val();
+                        //if(a=="toggle")
+                        //$("div").toggle(1000);
+                        //if(a=="fadetoggle")
+                        //$("div").fadeToggle(1000);
+                        //if(a=="slidetoggle")
+                        //$("div").slideToggle(1000);
+                        switch(a)
+                        {
+                            case "toggle":$("div").toggle(1000);
+                                            break;
+                            case "fadetoggle":$("div").fadeToggle(1000);
+                                            break;
+                            case "slidetoggle":$("div").slideToggle(1000);
+                                            break;
+                        }
+                        
+                    }
+                );
+
+            }
+            );
+        </script>
+
+        <div style="height: 200px; width: 200px;background-color: rgb(67, 67, 189);border: solid;"></div>
+        <input list="language" name="language" id="lists">
+            <datalist id="language">
+                <option value="toggle"selected>
+                <option value="fadetoggle"selected>
+                <option value="slidetoggle"selected>
+            </datalist><br><br>
+        <button id="b1" type="button">select</button>
+        
+
+
+    </body>
+</html>

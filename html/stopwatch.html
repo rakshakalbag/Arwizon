@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Stopwatch</h2>
+
+        <p id="demo"></p>
+        <button id="Btn">start</button>
+        <button id="Btnstp">stop</button>
+
+
+        <script>
+                document.getElementById("Btn").addEventListener("click", display);
+                
+                var myVar = setInterval(display ,1000);
+                
+                document.getElementById("Btnstp").addEventListener("click", clearInterval(myVar));
+        </script>
+    </body>
+</html>

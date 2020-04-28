@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function()
+            {
+                $("#b1").click(
+                    function()
+                    {
+                        $("div").hide();
+                    }
+                );
+
+                $("#b2").click(
+                    function()
+                    {
+                        $("div").show();
+                    }
+                );
+            }
+            );
+        </script>
+
+        <div style="height: 100px; width: 100px;background-color: rgb(67, 67, 189);border: solid;"></div>
+        <button id="b1" type="button">hide</button>
+        <button id="b2" type="button">show</button>
+
+
+    </body>
+</html>
